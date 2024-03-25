@@ -16,7 +16,7 @@ export default function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div key={index} className="bg-gray-800 p-8 rounded-lg flex flex-col">
               <div className="mb-6">
-                <TerminalIcon className="w-8 h-8 mb-4 text-gray-400" />
+                <TerminalIcon className="w-8 inline-block mb-4 text-green-500" />
                 <p className="text-lg leading-relaxed">{testimonial.quote}</p>
               </div>
               <div className="flex items-center">

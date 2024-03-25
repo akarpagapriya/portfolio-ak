@@ -1,17 +1,14 @@
-import React from "react";
+// Footer.js
+
+import React from 'react';
+
 
 export default function Footer() {
     return (
-        <Footer className="bg-gray-800 text-white py-4 text-center">
-            <div className="container mx-auto">
-                <p className="text-sm">
-                    All rights reserved @ {new Date().getFullYear()}
-                </p>
-                <p className="text-sm mt-2">
-                    Developed ANd designed by Karpagapriya A
-                </p>
+        <footer className="bg-gray-900 py-4">
+            <div className="container mx-auto flex justify-center px-6 md:px-0">
+                <p className="text-gray-400 text-lg">Developed and designed by KarpagaPriya @ 2024.</p>
             </div>
-        </Footer>
+        </footer>
     );
 }
-
