@@ -1,8 +1,20 @@
-import { CodeIcon } from "@heroicons/react/solid";
-import React from "react";
+import React, { useState } from "react";
+import { CodeIcon, ChevronRightIcon } from "@heroicons/react/solid";
 import { project } from "../data";
 
 export default function Project() {
+  const [expandedProject, setExpandedProject] = useState(null);
+
+  const handleProjectClick = (link) => {
+    window.location.href = link;
+  };
+
+  const toggleProjectDetails = (index) => {
+    setExpandedProject(
+      expandedProject === index ? null : index
+    );
+  };
+
   return (
     <section id="projects" className="text-gray-400 bg-gray-900 body-font">
       <div className="container px-5 py-10 mx-auto">
@@ -16,31 +28,41 @@ export default function Project() {
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          {project.map((project) => (
-            <a
-              href={project.link}
-              key={project.image}
-              className="group relative block overflow-hidden rounded-lg"
-            >
-              <div className="relative h-64 md:h-72">
+          {project.map((proj, index) => (
+            <div key={index} className="relative col-span-1">
+              <div className="relative overflow-hidden rounded-lg">
                 <img
-                  alt="project"
-                  className="w-full h-full object-cover object-center transition duration-300 transform group-hover:scale-105"
-                  src={project.image}
+                  src={proj.image}
+                  alt={proj.title}
+                  className="w-full h-72 object-cover cursor-pointer rounded-lg"
+                  onClick={() => handleProjectClick(proj.link)}
                 />
-                <div className="absolute inset-0 p-4 bg-gray-900 bg-opacity-90 transition duration-300 opacity-0 group-hover:opacity-100">
-                  <h2 className="text-sm font-medium text-green-400 mb-1">
-                    {project.subtitle}
-                  </h2>
-                  <h1 className="text-lg font-medium text-white mb-2">
-                    {project.title}
-                  </h1>
-                  <p className="text-sm leading-relaxed text-white">
-                    {project.description}
-                  </p>
+                <div
+                  className="absolute inset-0 flex justify-between items-start p-4 bg-gray-900 bg-opacity-0 text-white transition-opacity hover:bg-opacity-90"
+                  onMouseEnter={() => setExpandedProject(index)}
+                  onMouseLeave={() => setExpandedProject(null)}
+                >
+                  <div>
+                    <h2 className="text-sm font-medium text-green-400 mb-1">
+                      {proj.subtitle}
+                    </h2>
+                    <h1 className="text-lg font-medium text-white mb-2">
+                      {proj.title}
+                    </h1>
+                  </div>
+                  <a
+                    href={proj.link}
+                    className="text-white bg-green-500 px-3 py-1 rounded-lg focus:outline-none flex items-center justify-center text-sm"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View Project
+                    <ChevronRightIcon className="w-4 h-4 ml-1" />
+                  </a>
                 </div>
+
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </div>

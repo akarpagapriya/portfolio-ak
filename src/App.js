@@ -7,6 +7,7 @@ import Skills from "./components/Skills";
 import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
 import Resume from './components/Resume';
+import GohomeButton from './components/GohomeButton';
 
 
 export default function App() {
@@ -20,7 +21,7 @@ export default function App() {
       <Testimonials />
       <Contact />
       <Footer />
-      
+      <GohomeButton />
     </main>
   );
 }

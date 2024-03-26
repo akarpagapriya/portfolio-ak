@@ -15,7 +15,7 @@ export const project = [
    },
    {
     title: "Logo Identity",
-        subtitle: "Crafting Unique Brand Identities",
+        subtitle: "Unique Brand Identities",
         description: "Transform your brand with our bespoke identity designs. From logos to visual systems, we'll create a standout identity that sets you apart.",
         image: "./project-3.png",
         link: "https://www.behance.net/gallery/181105077/Tusko-Brand-Identity",
