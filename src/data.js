@@ -32,7 +32,7 @@ export const project = [
 export const testimonials = [
     {
      quote: "KarpagaPriya's logo design was a game-changer for our company. It perfectly captured our power engineering business's essence and symbolizes our professionalism. Highly recommended for brand elevation.",
-     image:"./client-1.png",
+     image:"./client-1.png", 
      name: "JM Nandhu",
      company: "JMN Engineering Enterprise"          
     },
