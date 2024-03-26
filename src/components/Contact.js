@@ -1,26 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Contact() {
-  const [name, setname] = React.useState("");
-  const [email, setemail] = React.useState("");
-  const [message, setmessage] = React.useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
-  function encode(data) {
-    return Object.keys(data)
-      .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&");
-  }
-
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "contact", name, email, message }),
     })
-      .then(() => alert("Got it! Expect a response shortly."))
-      .catch((error) => alert("Uh-oh! There was an error."));
-  }
+      .then(() => {
+        alert("Thank you for your message! We'll be in touch soon.");
+        setName("");
+        setEmail("");
+        setMessage("");
+      })
+      .catch((error) => alert("Oops! Something went wrong."));
+  };
+
+  const encode = (data) => {
+    return Object.keys(data)
+      .map(
+        (key) =>
+          encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
+      .join("&");
+  };
 
   return (
     <section id="contact" className="relative bg-gray-900 text-white py-20">
@@ -58,7 +66,7 @@ export default function Contact() {
               <h2 className="title-font font-semibold text-white tracking-widest text-xs mt-4">
                 Phone
               </h2>
-              <p className="leading-relaxed">9080 437 163</p>
+              <p className="leading-relaxed">+91 9080437163</p>
             </div>
           </div>
         </div>
@@ -66,6 +74,7 @@ export default function Contact() {
           name="contact"
           onSubmit={handleSubmit}
           className="lg:w-1/3 md:w-1/2 flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0"
+          data-netlify="true"
         >
           <h2 className="text-white sm:text-4xl text-3xl mb-1 font-medium title-font">
             Let's Collaborate
@@ -82,7 +91,7 @@ export default function Contact() {
               id="name"
               name="name"
               value={name}
-              onChange={(e) => setname(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
               className="w-full bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             />
           </div>
@@ -96,7 +105,7 @@ export default function Contact() {
               id="email"
               name="email"
               value={email}
-              onChange={(e) => setemail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             />
           </div>
@@ -109,7 +118,7 @@ export default function Contact() {
               id="message"
               name="message"
               value={message}
-              onChange={(e) => setmessage(e.target.value)}
+              onChange={(e) => setMessage(e.target.value)}
               className="w-full bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 h-32 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
             />
           </div>

@@ -14,12 +14,11 @@ export default function Testimonials() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-gray-800 p-8 rounded-lg flex flex-col">
-              <div className="mb-6">
-                <TerminalIcon className="w-8 inline-block mb-4 text-green-500" />
-                <p className="text-lg leading-relaxed">{testimonial.quote}</p>
+            <div key={index} className="testimonial-card">
+              <div className="testimonial-content">
+              <img src="/logow.svg" alt="Logo" className="w-8 inline-block mb-4 text-green-500" />                <p className="text-lg leading-relaxed">{testimonial.quote}</p>
               </div>
-              <div className="flex items-center">
+              <div className="testimonial-author">
                 <img
                   alt="testimonial"
                   src={testimonial.image}

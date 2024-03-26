@@ -20,23 +20,25 @@ export default function Project() {
             <a
               href={project.link}
               key={project.image}
-              className="group relative"
+              className="group relative block overflow-hidden rounded-lg"
             >
-              <img
-                alt="project"
-                className="w-full h-full object-cover object-center rounded-lg"
-                src={project.image}
-              />
-              <div className="absolute inset-0 p-4 bg-gray-900 bg-opacity-0 group-hover:bg-opacity-90 transition duration-300 rounded-lg">
-                <h2 className="text-sm font-medium text-green-400 mb-1">
-                  {project.subtitle}
-                </h2>
-                <h1 className="text-lg font-medium text-white mb-2">
-                  {project.title}
-                </h1>
-                <p className="text-sm leading-relaxed text-white">
-                  {project.description}
-                </p>
+              <div className="relative h-64 md:h-72">
+                <img
+                  alt="project"
+                  className="w-full h-full object-cover object-center transition duration-300 transform group-hover:scale-105"
+                  src={project.image}
+                />
+                <div className="absolute inset-0 p-4 bg-gray-900 bg-opacity-90 transition duration-300 opacity-0 group-hover:opacity-100">
+                  <h2 className="text-sm font-medium text-green-400 mb-1">
+                    {project.subtitle}
+                  </h2>
+                  <h1 className="text-lg font-medium text-white mb-2">
+                    {project.title}
+                  </h1>
+                  <p className="text-sm leading-relaxed text-white">
+                    {project.description}
+                  </p>
+                </div>
               </div>
             </a>
           ))}
