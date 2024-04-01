@@ -1,7 +1,7 @@
 import React from "react";
 
 const Resume = () => {
-  const resumeUrl = "/your_resume.pdf"; // Replace with the path to your PDF resume
+  const resumeUrl = "/Karpagapriya Resume.pdf"; // Replace with the path to your PDF resume
 
   return (
     <section id="resume" className="bg-gray-800 text-white py-20">
